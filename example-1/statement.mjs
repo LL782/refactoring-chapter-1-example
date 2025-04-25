@@ -1,10 +1,14 @@
 export function statement(invoice, plays) {
+  return renderPlainText(createStatementData(invoice, plays));
+}
+
+function createStatementData(invoice, plays) {
   const data = {};
   data.customer = invoice.customer;
   data.performances = invoice.performances.map(enrichPerformance);
   data.totalAmount = totalAmount();
   data.totalVolumeCredits = totalVolumeCredits();
-  return renderPlainText(data, plays);
+  return data;
 
   function enrichPerformance(aPerformance) {
     const result = { ...aPerformance };
