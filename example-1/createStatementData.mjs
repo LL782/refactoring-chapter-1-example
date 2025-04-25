@@ -1,10 +1,10 @@
 export function createStatementData(invoice, plays) {
-  const data = {};
-  data.customer = invoice.customer;
-  data.performances = invoice.performances.map(enrichPerformance);
-  data.totalAmount = totalAmount();
-  data.totalVolumeCredits = totalVolumeCredits();
-  return data;
+  const statementData = {};
+  statementData.customer = invoice.customer;
+  statementData.performances = invoice.performances.map(enrichPerformance);
+  statementData.totalAmount = totalAmount();
+  statementData.totalVolumeCredits = totalVolumeCredits();
+  return statementData;
 
   function enrichPerformance(aPerformance) {
     const result = { ...aPerformance };
@@ -19,7 +19,7 @@ export function createStatementData(invoice, plays) {
   }
   function totalAmount() {
     let result = 0;
-    for (let perf of data.performances) {
+    for (let perf of statementData.performances) {
       result += perf.amount;
     }
     return result;
@@ -27,7 +27,7 @@ export function createStatementData(invoice, plays) {
 
   function totalVolumeCredits() {
     let result = 0;
-    for (let perf of data.performances) {
+    for (let perf of statementData.performances) {
       result += perf.volumeCredits;
     }
     return result;
