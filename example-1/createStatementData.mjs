@@ -62,9 +62,6 @@ export function createStatementData(invoice, plays) {
   }
 
   function totalVolumeCredits() {
-    return statementData.performances.reduce(
-      (total, p) => total + p.volumeCredits,
-      0
-    );
+    return statementData.performances.reduce((t, p) => t + p.volumeCredits, 0);
   }
 }
