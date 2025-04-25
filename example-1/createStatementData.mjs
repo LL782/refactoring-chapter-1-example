@@ -41,12 +41,9 @@ export function createStatementData(invoice, plays) {
   statementData.totalVolumeCredits = totalVolumeCredits();
   return statementData;
 
-  function enrichPerformance(aPerformance) {
-    const calculator = new PerformanceCalculator(
-      aPerformance,
-      playFor(aPerformance)
-    );
-    const result = { ...aPerformance };
+  function enrichPerformance(aPerf) {
+    const calculator = new PerformanceCalculator(aPerf, playFor(aPerf));
+    const result = { ...aPerf };
     result.play = calculator.play;
     result.amount = calculator.amount;
     result.volumeCredits = calculator.volumeCredits;
